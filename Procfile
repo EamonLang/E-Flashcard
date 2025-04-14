@@ -1,1 +1,1 @@
-web: gunicorn "flashcard web.app":app
+web: gunicorn flashcardWeb.app:app
