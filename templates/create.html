@@ -1,0 +1,47 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}Create | Flashcard App{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="/static/create.css">{% endblock %}
+{% block content %}
+<div class="set-page">
+
+
+    <div class="create-wrapper">
+
+    <div class="create-container">
+        <h1>Enter the title of your new set to begin</h1>
+
+        <input id="title" placeholder="Title">
+        <button id="enter_title">Enter</button>
+        <p>Now enter the question</p>
+        <input id="question" placeholder="Question">
+        
+        <p>Now enter the Answer</p>
+        <input id="answer" placeholder="Answer">
+        <button id="QA_button">Enter</button>
+
+        
+        <a href="{{ url_for('home')}}">
+            <button id="home">Save set and return home</button>
+        </a>
+    </div>
+    
+    <div class="card-container">
+        <h1 id="title-example">Title:</h1>
+        <h1>Question:</h1>
+        <div class="create-box" id="create-card-question">
+            <p id="create-cardText-question">Question</p>
+        </div>
+
+    <h1>Answer:</h1>
+
+        <div class="create-box" id="create-card-answer">
+            <p id="create-cardText-answer">Answer</p>
+        </div>
+    </div>
+    
+</div>
+</div>
+    
+{% endblock %}

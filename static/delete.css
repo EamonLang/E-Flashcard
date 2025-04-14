@@ -1,0 +1,42 @@
+.delete-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color:#f9f9f9 ;
+    height: 100vh;
+}
+
+#del_sets{
+    list-style: none;
+    padding:0;
+    width: 100%;
+    max-width: 600px;
+}
+
+#del_sets li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: #fff;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    color: #333;
+}
+
+#del_sets li button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#del_sets li button:hover {
+    background-color: #ff3333;
+}

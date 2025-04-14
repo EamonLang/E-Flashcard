@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login | Flashcard App{% endblock %}
+
+{% block content %}
+<h1>Enter Username and Password</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username }}
+        {{ form.password }}
+        {{ form.email }}
+        {{ form.submit }}
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <a href="{{ url_for ('reset')}}">Forgot Password?</a>
+{% endblock %}
