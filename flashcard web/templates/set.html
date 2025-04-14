@@ -1,0 +1,30 @@
+
+
+{% extends 'layout.html' %}
+
+{% block title %}Home | Flashcard App{% endblock %}
+{% block extra_css %} <link rel="stylesheet" href="/static/set.css">{% endblock %}
+
+{% block content %}
+<div class="set-page">
+    <h1> Press to Practice</h1>
+    <div class="container">
+        <div class="box" id="card">
+            <p id="cardText">Press</p>
+        </div>
+    </div>
+    <a href="{{ url_for ('home')}}">
+        <button>Return home</button>
+    </a>
+</div>
+<script>
+    const card = document.getElementById("card")
+    card.addEventListener("click",function(){
+        card.classList.remove("flip")
+        void card.offsetWidth
+        card.classList.add("flip")
+
+    })
+</script>
+
+{% endblock %}
