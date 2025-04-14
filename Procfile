@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn "flashcard web.app":app
