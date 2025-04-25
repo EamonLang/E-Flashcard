@@ -10,11 +10,12 @@ nlp = spacy.load("custom_ner_model")
 
 training_text = "In Italy, you can enjoy pasta, pizza, and gelato; in Japan, you can savor sushi, ramen, and tempura; in Mexico, you can eat tacos, burritos, and guacamole; in India, you can relish curry, samosas, and naan; in France, you can indulge in croissants, baguettes, and coq au vin; in Thailand, you can taste pad Thai, green curry, and mango sticky rice; in Greece, you can have souvlaki, moussaka, and baklava; in China, you can feast on dumplings, Peking duck, and sweet and sour pork; in Brazil, you can enjoy feijoada, pão de queijo, and caipirinha; in the United States, you can devour burgers, hot dogs, and apple pie; in Spain, you can savor paella, tapas, and churros."
 
-text = "Pizza in france"
+text = input("create flashcards for: ")
 # search wikipedia based on topic
-def search(topic):
+def search(topic,topic_class):
+    search_arguments=f"{topic}, ({topic_class})"
     try:
-        return wikipedia.summary(topic,sentences=2)
+        return wikipedia.summary(search_arguments,sentences=2)
     except Exception as e:
         print(f"Error searching: {e}")
 # cleans token is there are any spelling mistakes on input
@@ -53,9 +54,9 @@ def find_information(text):
             word_dic[f"{token.text}"] = cleaned_words
             # search for the words
             for words in word_dic:
-                information[words] = search(words)
+                information[words] = search(words,"NOUN")
         elif token.ent_type_ == "COUNTRY" or token.ent_type_ == "FOOD":
-            summary2 = search(token.text)
+            summary2 = search(token.text,token.ent_type_)
             information[token.text] = summary2
             card = flashcard(summary2,token.text)
             flashcards['Card'] = card
@@ -84,10 +85,9 @@ def flashcard(text,keyword):
     sentences.remove("")
     card['Name'] = keyword
     for i,sentence in enumerate(sentences):
-        print(f"sentence: {sentence.lower()}, Keyword: {keyword.lower()}")   
+        # print(f"sentence: {sentence.lower()}, Keyword: {keyword.lower()}")   
         if keyword.lower() in sentence.lower():
             new_sentence = sentence.lower().replace(keyword,"____")
-            print("replaced")
             card[f"question-{i}"] = new_sentence
             card[f"answer-{i}"] = keyword
             continue
@@ -99,4 +99,6 @@ def flashcard(text,keyword):
     
     print(f"cards\n{card}\ncards")
     
-print(find_information(text))    
+# print(find_information(text))    
+
+find_information(text)
