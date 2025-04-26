@@ -71,10 +71,11 @@ def find_information(text):
 def check_training(text):
     doc = nlp(text)
     for token in doc:
-        if token.ent_type_ == "COUNTRY" or token.ent_type_ == "FOOD":
-            print(f"{token.text}-->{token.ent_type_}")
+        if token.ent_type_:
+            print(f"{token.text} --> {token.ent_type_}")
         else:
             print(token.text)
+            
 
 
 
