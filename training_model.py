@@ -198,6 +198,7 @@ COMBINED_TRAIN_DATA = [
 
 
 NEW_DATA_SET = [
+    # animals
     ("The lion is known as the king of the jungle.", {"entities": [(4, 8, "ANIMAL")]}),
     ("Pandas primarily eat bamboo and live in China.", {"entities": [(0, 6, "ANIMAL")]}),
     ("I saw a kangaroo hopping across the field.", {"entities": [(8, 16, "ANIMAL")]}),
@@ -220,7 +221,7 @@ NEW_DATA_SET = [
     ("She learned Portuguese before moving to Brazil.", {"entities": [(13, 23, "LANGUAGE")]}),
     ("Arabic is the official language of many countries.", {"entities": [(0, 6, "LANGUAGE")]}),
     ("They are studying Korean for a work opportunity.", {"entities": [(19, 25, "LANGUAGE")]}),
-
+    # Country Data
     ("Spain is famous for its beautiful beaches and vibrant festivals.", {"entities": [(0, 5, "COUNTRY")]}),
     ("I want to explore the temples of Thailand.", {"entities": [(30, 38, "COUNTRY")]}),
     ("Kenya offers some of the best safaris in the world.", {"entities": [(0, 5, "COUNTRY")]}),
@@ -246,33 +247,76 @@ NEW_DATA_SET = [
     ("The wildlife of Madagascar is truly unique.", {"entities": [(15, 25, "COUNTRY")]}),
     ("The streets of Havana, Cuba, are full of life.", {"entities": [(18, 22, "COUNTRY")]}),
     ("Many tourists visit the pyramids of Sudan.", {"entities": [(31, 36, "COUNTRY")]}),
+    ("I am planning a trip to France this summer", {"entities": [(24, 30, "COUNTRY")]}),
+    ("Germany has a rich history and beautiful landscapes", {"entities": [(0, 7, "COUNTRY")]}),
+    ("Canada is known for its maple syrup and cold winters", {"entities": [(0, 6, "COUNTRY")]}),
+    ("Brazil hosted the World Cup in 2014", {"entities": [(0, 6, "COUNTRY")]}),
+    ("India has a diverse culture and cuisine", {"entities": [(0, 5, "COUNTRY")]}),
+    ("The United States is a popular tourist destination", {"entities": [(4, 18, "COUNTRY")]}),
+    ("I have relatives living in Italy", {"entities": [(27, 32, "COUNTRY")]}),
+    ("Australia is famous for its wildlife and beaches", {"entities": [(0, 9, "COUNTRY")]}),
+    ("The Eiffel Tower is located in Paris, France", {"entities": [(38, 44, "COUNTRY")]}),
+    ("China has a long history and a large population", {"entities": [(0, 5, "COUNTRY")]}),
+    ("Japan is a leader in technology and innovation", {"entities": [(0, 5, "COUNTRY")]}),
+    ("South Africa is known for its wildlife and safaris", {"entities": [(0, 12, "COUNTRY")]}),
+    ("Mexico is famous for its tacos and vibrant culture", {"entities": [(0, 6, "COUNTRY")]}),
+    ("Argentina's capital is Buenos Aires", {"entities": [(0, 9, "COUNTRY")]}),
+    ("Egypt is home to the ancient pyramids", {"entities": [(0, 5, "COUNTRY")]}),
+    ("I would love to visit Greece next year", {"entities": [(22, 28, "COUNTRY")]}),
+    ("The UK is famous for its royal family", {"entities": [(4, 6, "COUNTRY")]}),
+    ("Russia spans across Europe and Asia", {"entities": [(0, 6, "COUNTRY")]}),
+    ("Mexico is bordered by the United States to the north", {"entities": [(0, 6, "COUNTRY"), (26, 39, "COUNTRY")]}),
+    ("Turkey is located between Europe and Asia", {"entities": [(0, 6, "COUNTRY")]}),
+    ("Norway has stunning fjords and a rich cultural heritage", {"entities": [(0, 6, "COUNTRY")]}),
+    ("Sweden is known for its high quality of life", {"entities": [(0, 6, "COUNTRY")]}),
+    ("The Netherlands is famous for its tulips and windmills", {"entities": [(4, 16, "COUNTRY")]}),
 
     # Food Data
-    ("I had ramen for lunch today.", {"entities": [(6, 11, "FOOD")]}),
-    ("For dessert, we shared a slice of cheesecake.", {"entities": [(27, 36, "FOOD")]}),
-    ("Avocado toast is my favorite breakfast.", {"entities": [(0, 13, "FOOD")]}),
-    ("I grabbed a burrito and a side of guacamole.", {"entities": [(12, 19, "FOOD"), (34, 43, "FOOD")]}),
-    ("Samosas are a popular street food in India.", {"entities": [(0, 7, "FOOD")]}),
-    ("Pho is a delicious Vietnamese noodle soup.", {"entities": [(0, 3, "FOOD")]}),
-    ("I tried baklava for the first time today.", {"entities": [(7, 14, "FOOD")]}),
-    ("Churros dipped in hot chocolate are delicious.", {"entities": [(0, 7, "FOOD"), (18, 31, "FOOD")]}),
-    ("We ordered tacos and enchiladas for dinner.", {"entities": [(11, 16, "FOOD"), (21, 31, "FOOD")]}),
-    ("My favorite snack is trail mix with almonds.", {"entities": [(20, 29, "FOOD"), (35, 42, "FOOD")]}),
-    ("I baked a fresh loaf of banana bread.", {"entities": [(24, 36, "FOOD")]}),
-    ("We had grilled salmon with a side of asparagus.", {"entities": [(11, 17, "FOOD"), (38, 47, "FOOD")]}),
-    ("He cooked a creamy mushroom risotto.", {"entities": [(17, 34, "FOOD")]}),
-    ("She loves açaí bowls for breakfast.", {"entities": [(10, 19, "FOOD")]}),
-    ("We prepared lentil soup with garlic bread.", {"entities": [(13, 24, "FOOD"), (30, 42, "FOOD")]}),
-    ("The picnic included baguettes, brie, and grapes.", {"entities": [(20, 29, "FOOD"), (31, 35, "FOOD"), (41, 47, "FOOD")]}),
-    ("He made a curry with chickpeas and sweet potatoes.", {"entities": [(10, 15, "FOOD"), (21, 30, "FOOD"), (35, 49, "FOOD")]}),
-    ("We had dumplings and fried rice for dinner.", {"entities": [(7, 16, "FOOD"), (21, 31, "FOOD")]}),
-    ("She brought falafel wraps for the group.", {"entities": [(12, 25, "FOOD")]}),
-    ("I snacked on edamame and miso soup.", {"entities": [(13, 20, "FOOD"), (25, 33, "FOOD")]}),
-    ("He ate a bag of kettle corn during the movie.", {"entities": [(15, 26, "FOOD")]}),
-    ("We cooked stuffed peppers and mashed potatoes.", {"entities": [(12, 27, "FOOD"), (32, 47, "FOOD")]}),
-    ("I enjoyed oysters and clam chowder by the sea.", {"entities": [(9, 16, "FOOD"), (21, 33, "FOOD")]}),
-    ("We shared a platter of bruschetta and olives.", {"entities": [(22, 32, "FOOD"), (37, 43, "FOOD")]}),
-    ("He made fresh pita bread with hummus.", {"entities": [(15, 25, "FOOD"), (31, 37, "FOOD")]}),
+    ("Italian pizza is good.",{"entities":[(8,13,"FOOD")]}),
+    ("I ate chicken with rice",{"entities":[(6,13,"FOOD"),(19,23,"FOOD")]}),
+    ("I love sushi and hamburgers",{"entities":[(7,12,"FOOD"),(17,27,"FOOD")]}),
+    ("I had a warm bowl of tomato soup for lunch.", {"entities": [(21, 32, "FOOD")]}),  
+    ("She sprinkled cinnamon on her oatmeal this morning.", {"entities": [(14, 22, "FOOD"), (30, 37, "FOOD")]}),  
+    ("They ordered a large pepperoni pizza for the party.", {"entities": [(21, 36, "FOOD")]}),  
+    ("He made guacamole with ripe avocados and lime juice.", {"entities": [(8, 17, "FOOD"), (28, 36, "FOOD"), (41, 51, "FOOD")]}),  
+    ("We grilled hamburgers in the backyard over charcoal.", {"entities": [(11, 21, "FOOD")]}),  
+    ("I brought a bag of pretzels for the road trip.", {"entities": [(19, 27, "FOOD")]}),  
+    ("She baked banana bread with walnuts and dark chocolate.", {"entities": [(10, 22, "FOOD"), (28, 35, "FOOD"), (40, 54, "FOOD")]}),  
+    ("He stirred honey into his green tea for sweetness.", {"entities": [(11, 16, "FOOD"), (26, 35, "FOOD")]}),  
+    ("They served fried rice with soy sauce and scallions.", {"entities": [(12, 22, "FOOD"), (28, 37, "FOOD"), (42, 51, "FOOD")]}),  
+    ("She snacked on baby carrots and hummus during the movie.", {"entities": [(15, 27, "FOOD"), (32, 38, "FOOD")]}),  
+    ("I made spaghetti with homemade marinara sauce.", {"entities": [(7, 16, "FOOD"), (31, 45, "FOOD")]}),  
+    ("We had scrambled eggs with chives for breakfast.", {"entities": [(7, 21, "FOOD"), (27, 33, "FOOD")]}),  
+    ("She dipped strawberries into melted chocolate.", {"entities": [(11, 23, "FOOD"), (29, 45, "FOOD")]}),  
+    ("He roasted sweet potatoes with rosemary and olive oil.", {"entities": [(11, 25, "FOOD"), (31, 39, "FOOD"), (44, 53, "FOOD")]}),  
+    ("They ordered shrimp tacos with spicy salsa.", {"entities": [(13, 25, "FOOD"), (37, 42, "FOOD")]}),  
+    ("I love eating sourdough toast with almond butter.", {"entities": [(14, 29, "FOOD"), (35, 48, "FOOD")]}),  
+    ("She packed a turkey sandwich and an apple for lunch.", {"entities": [(13, 28, "FOOD"), (36, 41, "FOOD")]}),  
+    ("He topped his burger with lettuce, tomato, and pickles.", {"entities": [(14, 20, "FOOD"), (26, 33, "FOOD"), (35, 41, "FOOD"), (47, 54, "FOOD")]}),  
+    ("We made a fruit salad with melon, berries, and grapes.", {"entities": [(10, 21, "FOOD"), (27, 32, "FOOD"), (34, 41, "FOOD"), (47, 53, "FOOD")]}),  
+    ("She added sliced cucumbers to her water for a refreshing drink.", {"entities": [(17, 26, "FOOD")]}),  
+    ("He made an omelet with mushrooms, spinach, and feta.", {"entities": [(11, 17, "FOOD"), (23, 32, "FOOD"), (34, 41, "FOOD"), (47, 51, "FOOD")]}),  
+    ("They bought cinnamon rolls from the local bakery.", {"entities": [(12, 26, "FOOD")]}),  
+    ("I made pancakes with maple syrup and blueberries.", {"entities": [(7, 15, "FOOD"), (21, 32, "FOOD"), (37, 48, "FOOD")]}),  
+    ("She cooked quinoa with roasted vegetables.", {"entities": [(11, 17, "FOOD"), (31, 41, "FOOD")]}),  
+    ("He brought a container of Greek yogurt and granola.", {"entities": [(26, 38, "FOOD"), (43, 50, "FOOD")]}),  
+    ("They enjoyed a plate of nachos with melted cheese.", {"entities": [(24, 30, "FOOD"), (36, 49, "FOOD")]}),  
+    ("She made a smoothie with kale, banana, and mango.", {"entities": [(11, 19, "FOOD"), (25, 29, "FOOD"), (31, 37, "FOOD"), (43, 48, "FOOD")]}),  
+    ("He baked a chocolate chip cookie the size of a plate.", {"entities": [(10, 33, "FOOD")]}),  
+    ("We made a big pot of chili with kidney beans and beef.", {"entities": [(21, 26, "FOOD"), (32, 44, "FOOD"), (49, 53, "FOOD")]}),  
+    ("She bought a bag of trail mix for hiking.", {"entities": [(20, 29, "FOOD")]}),  
+    ("He toasted a bagel and added cream cheese.", {"entities": [(13, 18, "FOOD"), (29, 41, "FOOD")]}),  
+    ("They grilled asparagus and zucchini on skewers.", {"entities": [(13, 22, "FOOD"), (27, 35, "FOOD")]}),  
+    ("She brought deviled eggs to the picnic.", {"entities": [(12, 24, "FOOD")]}),  
+    ("He ate a bowl of cereal with cold milk.", {"entities": [(17, 23, "FOOD"), (34, 38, "FOOD")]}),  
+    ("We shared a box of sushi rolls at lunch.", {"entities": [(19, 24, "FOOD")]}),  
+    ("She picked fresh raspberries from the garden.", {"entities": [(17, 28, "FOOD")]}),  
+    ("He sipped coconut water after his workout.", {"entities": [(10, 23, "FOOD")]}),  
+    ("They baked a pie filled with fresh peaches.", {"entities": [(29, 42, "FOOD")]}),  
+    ("I packed a thermos of chicken noodle soup.", {"entities": [(22, 41, "FOOD")]}),  
+    ("She added basil and mozzarella to her caprese salad.", {"entities": [(10, 15, "FOOD"), (20, 30, "FOOD"), (38, 51, "FOOD")]}),  
+    ("He had a sandwich with bacon, lettuce, and tomato.", {"entities": [(16, 21, "FOOD"), (23, 29, "FOOD"), (31, 37, "FOOD")]}),  
+    ("They ordered a vegetable stir fry with tofu and rice.", {"entities": [(22, 29, "FOOD"), (34, 38, "FOOD"), (43, 47, "FOOD")]}),
 
     # city data
 
@@ -366,7 +410,7 @@ NEW_DATA_SET = [
 
 
 ]
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("custom_ner_model")
 
 
 
@@ -426,6 +470,6 @@ for text, annot in food_data:
         if label not in ner.labels:
             ner.add_label(label)
 train(NEW_DATA_SET,["FOOD","COUNTRY","CITY","SPORT","ANIMAL","LANGUAGE"])
-
+# clean_data(NEW_DATA_SET)
 
 # next train countries

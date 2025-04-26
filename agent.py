@@ -42,12 +42,25 @@ def find_information(text):
     word_dic = {}
     information = {}
     flashcards = {}
+    
+    # index makes sure each flashcard has a unique number so old card does not get over written. Each time a card is created the index in incremented allowing a new unique index for the next card
+    index = 1
+
+    # searches for sentence that user inputted and creates general flashcards
+    general_search = search(text,"general information")
+    card = flashcard(general_search,"GENERAL")
+    flashcards[f"Card-{index}"] = card
+
+    # then breaks down word for word and tries to find entities to search and create aditional flashcards
     for token in doc:
+        
         if token.ent_type_:
+                    print(f"{token.text} --> {token.ent_type_}")
                     summary2 = search(token.text,token.ent_type_)
                     information[token.text] = summary2
                     card = flashcard(summary2,token.text)
-                    flashcards['Card'] = card
+                    flashcards[f'Card-{index}'] = card
+                    index +=1
                     # word_dic[token.text] = information
         # so if it does not recognize theres an ent on the noun then it will also search for it. Otherwise it will skip it
         elif token.pos_ == 'NOUN' and not token.ent_type_:
@@ -60,12 +73,13 @@ def find_information(text):
             word_dic[f"{token.text}"] = cleaned_words
             # search for the words
             for words in word_dic:
-                words_info = search(words,"NOUN")
+                words_info = search(words,words)
                 card = flashcard(words_info,words)
-                flashcards['Card'] = card
+                flashcards[f'Card-{index}'] = card
+                index +=1
                 information[words] = words_info
         
-
+    print(f"flashcards from find_info\n {flashcards}")
     return word_dic, information, flashcards
 
 # checks how accurate the training was
@@ -102,10 +116,11 @@ def flashcard(text,keyword):
         
             continue
     
-    print(f"cards\n{card}\ncards")
+    # print(f"cards\n{card}\ncards")
+    return card
     
 # print(find_information(text))    
 
-# find_information(text)
+find_information(text)
 
-check_training(training_text)
+# check_training(training_text)
