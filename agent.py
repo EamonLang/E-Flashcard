@@ -43,8 +43,14 @@ def find_information(text):
     information = {}
     flashcards = {}
     for token in doc:
-
-        if token.pos_ == 'NOUN':
+        if token.ent_type_:
+                    summary2 = search(token.text,token.ent_type_)
+                    information[token.text] = summary2
+                    card = flashcard(summary2,token.text)
+                    flashcards['Card'] = card
+                    # word_dic[token.text] = information
+        # so if it does not recognize theres an ent on the noun then it will also search for it. Otherwise it will skip it
+        elif token.pos_ == 'NOUN' and not token.ent_type_:
             ms = nlp.vocab.vectors.most_similar(
             np.asarray([nlp.vocab.vectors[nlp.vocab.strings[token.text]]]), n=8)
             words = [nlp.vocab.strings[w] for w in ms[0][0]]
@@ -58,12 +64,7 @@ def find_information(text):
                 card = flashcard(words_info,words)
                 flashcards['Card'] = card
                 information[words] = words_info
-        elif token.ent_type_ == "COUNTRY" or token.ent_type_ == "FOOD":
-            summary2 = search(token.text,token.ent_type_)
-            information[token.text] = summary2
-            card = flashcard(summary2,token.text)
-            flashcards['Card'] = card
-            # word_dic[token.text] = information
+        
 
     return word_dic, information, flashcards
 
