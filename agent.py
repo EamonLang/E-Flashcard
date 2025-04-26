@@ -8,7 +8,7 @@ spell = SpellChecker()
 
 nlp = spacy.load("custom_ner_model")
 
-training_text = "In Italy, you can enjoy pasta, pizza, and gelato; in Japan, you can savor sushi, ramen, and tempura; in Mexico, you can eat tacos, burritos, and guacamole; in India, you can relish curry, samosas, and naan; in France, you can indulge in croissants, baguettes, and coq au vin; in Thailand, you can taste pad Thai, green curry, and mango sticky rice; in Greece, you can have souvlaki, moussaka, and baklava; in China, you can feast on dumplings, Peking duck, and sweet and sour pork; in Brazil, you can enjoy feijoada, pão de queijo, and caipirinha; in the United States, you can devour burgers, hot dogs, and apple pie; in Spain, you can savor paella, tapas, and churros."
+training_text = "We had coffee in Berlin yesterday.I have always dreamed of visiting Rio de Janeiro.Chicago winters are brutal.She moved from Seoul to New York.Bangkok has the best street markets.I've been playing basketball every weekend.Surfing looks so fun but also scary.Do you like to watch soccer or baseball more? They went skiing in the Alps.Fencing requires quick reflexes.Pandas are my favorite animals at the zoo.We saw a group of dolphins near the boat. Bats usually sleep during the day.Kangaroos can jump really high. The tiger stared directly at us.She learned Japanese before moving to Tokyo.Many people in Brazil speak Portuguese. I think German sounds very strong.He's studying Arabic at the university.Do you want to practice some French together? I traveled from Paris to Barcelona while practicing my Spanish.The kids learned some Korean after watching a documentary about Seoul.While in Sydney, we went surfing and saw kangaroos nearby.After playing volleyball in Dubai, we enjoyed some Arabic food. Lions are often associated with cities like Cairo in ancient myths."
 
 text = input("create flashcards for: ")
 # search wikipedia based on topic
@@ -54,7 +54,10 @@ def find_information(text):
             word_dic[f"{token.text}"] = cleaned_words
             # search for the words
             for words in word_dic:
-                information[words] = search(words,"NOUN")
+                words_info = search(words,"NOUN")
+                card = flashcard(words_info,words)
+                flashcards['Card'] = card
+                information[words] = words_info
         elif token.ent_type_ == "COUNTRY" or token.ent_type_ == "FOOD":
             summary2 = search(token.text,token.ent_type_)
             information[token.text] = summary2
@@ -101,4 +104,6 @@ def flashcard(text,keyword):
     
 # print(find_information(text))    
 
-find_information(text)
+# find_information(text)
+
+check_training(training_text)
