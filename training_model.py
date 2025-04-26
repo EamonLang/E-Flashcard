@@ -406,9 +406,115 @@ NEW_DATA_SET = [
     ("Hebrew is the language of Israel.", {"entities": [(0, 6, "LANGUAGE")]}),
     ("Learning Polish can be challenging.", {"entities": [(9, 15, "LANGUAGE")]}),
     ("We practiced Urdu during class.", {"entities": [(13, 17, "LANGUAGE")]}),
-    ("They sang songs in Bengali.", {"entities": [(18, 25, "LANGUAGE")]})
+    ("They sang songs in Bengali.", {"entities": [(18, 25, "LANGUAGE")]}),
 
+    # DATE examples
+    ("I have a meeting on January 5th", {"entities": [(21, 32, "DATE")]}),
+    ("Let's plan something for next Friday", {"entities": [(25, 36, "DATE")]}),
+    ("Her birthday is July 14", {"entities": [(16, 23, "DATE")]}),
+    ("The event is scheduled for tomorrow", {"entities": [(25, 33, "DATE")]}),
+    ("He is visiting on the 10th of December", {"entities": [(23, 38, "DATE")]}),
+    ("The deadline is next Monday", {"entities": [(17, 28, "DATE")]}),
+    ("We will meet on the 15th of August", {"entities": [(17, 34, "DATE")]}),
+    ("My appointment is on November 3rd", {"entities": [(17, 28, "DATE")]}),
+    ("The wedding is set for June 18th", {"entities": [(21, 32, "DATE")]}),
+    ("They are arriving on the 22nd of February", {"entities": [(23, 42, "DATE")]}),
+    ("The meeting will take place on April 7", {"entities": [(26, 32, "DATE")]}),
+    ("Her anniversary is on December 12", {"entities": [(16, 28, "DATE")]}),
+    ("We are traveling on the 25th of July", {"entities": [(19, 35, "DATE")]}),
+    ("The event is next weekend", {"entities": [(14, 25, "DATE")]}),
+    ("The conference starts in two days", {"entities": [(21, 32, "DATE")]}),
+    ("We are visiting in the fall", {"entities": [(17, 22, "DATE")]}),
+    ("The holiday season is coming soon", {"entities": [(19, 28, "DATE")]}),
+    ("The report is due in September", {"entities": [(17, 26, "DATE")]}),
+    ("I need to submit this by next Tuesday", {"entities": [(28, 41, "DATE")]}),
+    ("He is coming back on March 5", {"entities": [(22, 30, "DATE")]}),
 
+    # TIME examples
+    ("The appointment is at 3 PM", {"entities": [(22, 26, "TIME")]}),
+    ("We should meet around noon", {"entities": [(21, 25, "TIME")]}),
+    ("The movie starts at 8:30 p.m.", {"entities": [(20, 29, "TIME")]}),
+    ("The store opens at 9 AM", {"entities": [(17, 21, "TIME")]}),
+    ("I'll call you at 6:15", {"entities": [(14, 19, "TIME")]}),
+    ("The train departs at 7:00 a.m.", {"entities": [(20, 26, "TIME")]}),
+    ("The party starts at midnight", {"entities": [(20, 28, "TIME")]}),
+    ("The event starts at 10 PM", {"entities": [(19, 23, "TIME")]}),
+    ("We'll be there by 5:30", {"entities": [(16, 21, "TIME")]}),
+    ("I need the report by 8 AM", {"entities": [(22, 26, "TIME")]}),
+    ("The movie runs for 2 hours", {"entities": [(18, 22, "TIME")]}),
+    ("The class ends at 2:30 PM", {"entities": [(17, 22, "TIME")]}),
+    ("The game will begin at 4 o'clock", {"entities": [(22, 31, "TIME")]}),
+    ("I need to wake up at 7 AM", {"entities": [(16, 20, "TIME")]}),
+    ("The store closes at 10 PM", {"entities": [(19, 23, "TIME")]}),
+    ("We'll meet at 11:15 in the morning", {"entities": [(14, 32, "TIME")]}),
+    ("The concert starts at 6:45 PM", {"entities": [(20, 29, "TIME")]}),
+    ("I'll be ready by 4 PM", {"entities": [(17, 21, "TIME")]}),
+    ("We have a meeting at noon", {"entities": [(18, 22, "TIME")]}),
+    ("The movie is at 9:15", {"entities": [(16, 21, "TIME")]}),
+
+    # EVENT examples
+    ("I'm going to the World Cup next year", {"entities": [(18, 27, "EVENT")]}),
+    ("Did you watch the Oscars?", {"entities": [(20, 26, "EVENT")]}),
+    ("Comic-Con is happening this weekend", {"entities": [(0, 9, "EVENT")]}),
+    ("We attended the Met Gala last night", {"entities": [(16, 24, "EVENT")]}),
+    ("The Super Bowl is in February", {"entities": [(4, 15, "EVENT")]}),
+    ("The Grammy Awards are on Sunday", {"entities": [(4, 20, "EVENT")]}),
+    ("The concert is tomorrow evening", {"entities": [(15, 29, "EVENT")]}),
+    ("I'm planning to go to the Sundance Festival", {"entities": [(30, 48, "EVENT")]}),
+    ("We saw a great play last night", {"entities": [(10, 14, "EVENT")]}),
+    ("The concert was amazing", {"entities": [(4, 12, "EVENT")]}),
+    ("I attended a fantastic art exhibit", {"entities": [(15, 32, "EVENT")]}),
+    ("He performed at the Billboard Music Awards", {"entities": [(28, 56, "EVENT")]}),
+    ("The marathon is next Sunday", {"entities": [(4, 13, "EVENT")]}),
+    ("I watched a documentary on Netflix", {"entities": [(22, 32, "EVENT")]}),
+    ("The museum exhibit opens this weekend", {"entities": [(18, 41, "EVENT")]}),
+    ("They are going to a charity gala next month", {"entities": [(24, 33, "EVENT")]}),
+    ("The World Cup will be exciting", {"entities": [(0, 9, "EVENT")]}),
+    ("I'm attending a wedding this summer", {"entities": [(23, 32, "EVENT")]}),
+    ("Did you hear about the Nobel Prize Ceremony?", {"entities": [(25, 41, "EVENT")]}),
+
+    # ORG (companies) examples
+    ("I got a job offer from Microsoft", {"entities": [(24, 33, "ORG")]}),
+    ("She interned at Google last summer", {"entities": [(16, 22, "ORG")]}),
+    ("Amazon is launching a new service", {"entities": [(0, 6, "ORG")]}),
+    ("Tesla has introduced a new model", {"entities": [(0, 5, "ORG")]}),
+    ("Apple unveiled a new product", {"entities": [(0, 5, "ORG")]}),
+    ("Facebook has changed its name to Meta", {"entities": [(0, 8, "ORG")]}),
+    ("He works for a startup called Square", {"entities": [(26, 32, "ORG")]}),
+    ("Uber announced a new partnership", {"entities": [(0, 4, "ORG")]}),
+    ("Spotify launched a new playlist feature", {"entities": [(0, 7, "ORG")]}),
+    ("Intel released new processors", {"entities": [(0, 5, "ORG")]}),
+    ("I joined a company called LinkedIn", {"entities": [(24, 32, "ORG")]}),
+    ("Samsung is releasing new phones", {"entities": [(0, 7, "ORG")]}),
+    ("Microsoft has acquired LinkedIn", {"entities": [(0, 9, "ORG")]}),
+    ("I am working for a startup called Square", {"entities": [(24, 32, "ORG")]}),
+    ("Amazon Prime is expanding its services", {"entities": [(0, 6, "ORG")]}),
+    ("She got a promotion at PayPal", {"entities": [(23, 29, "ORG")]}),
+    ("Google launched a new phone", {"entities": [(0, 6, "ORG")]}),
+    ("They are investing in a startup called Stripe", {"entities": [(38, 44, "ORG")]}),
+    ("Microsoft's headquarters is in Redmond", {"entities": [(0, 9, "ORG")]}),
+    ("Tesla is investing in autonomous driving", {"entities": [(0, 5, "ORG")]}),
+
+    # WORK_OF_ART examples
+    ("I just finished reading The Great Gatsby", {"entities": [(24, 41, "WORK_OF_ART")]}),
+    ("Have you seen Inception?", {"entities": [(14, 23, "WORK_OF_ART")]}),
+    ("Yesterday I watched The Godfather", {"entities": [(20, 33, "WORK_OF_ART")]}),
+    ("I love the book 1984 by George Orwell", {"entities": [(15, 19, "WORK_OF_ART")]}),
+    ("The movie Jaws was a classic", {"entities": [(4, 8, "WORK_OF_ART")]}),
+    ("I'm re-reading The Catcher in the Rye", {"entities": [(17, 40, "WORK_OF_ART")]}),
+    ("Have you listened to Bohemian Rhapsody?", {"entities": [(25, 42, "WORK_OF_ART")]}),
+    ("The painting Starry Night is famous", {"entities": [(10, 23, "WORK_OF_ART")]}),
+    ("The book To Kill a Mockingbird is a classic", {"entities": [(9, 30, "WORK_OF_ART")]}),
+    ("I watched The Matrix for the first time", {"entities": [(10, 22, "WORK_OF_ART")]}),
+    ("The song Imagine by John Lennon is timeless", {"entities": [(4, 11, "WORK_OF_ART")]}),
+    ("I read Moby-Dick over the summer", {"entities": [(2, 11, "WORK_OF_ART")]}),
+    ("The Mona Lisa is on display in Paris", {"entities": [(4, 14, "WORK_OF_ART")]}),
+    ("The novel The Hobbit is a great adventure", {"entities": [(9, 19, "WORK_OF_ART")]}),
+    ("Have you seen The Shawshank Redemption?", {"entities": [(14, 38, "WORK_OF_ART")]}),
+    ("I listened to Bohemian Rhapsody by Queen", {"entities": [(11, 29, "WORK_OF_ART")]}),
+    ("The painting Girl with a Pearl Earring is famous", {"entities": [(10, 35, "WORK_OF_ART")]}),
+    ("I enjoy the musical Hamilton", {"entities": [(14, 23, "WORK_OF_ART")]}),
+    ("Have you read Harry Potter?", {"entities": [(12, 24, "WORK_OF_ART")]})
 ]
 nlp = spacy.load("custom_ner_model")
 
@@ -453,7 +559,7 @@ def train(data,name):
             train_examples.append(example)
     optimizer = nlp.resume_training()
 
-    for epoch in range(20):
+    for epoch in range(30):
         random.shuffle(train_examples)
         losses = {}
         for example in spacy.util.minibatch(train_examples,size=4):
