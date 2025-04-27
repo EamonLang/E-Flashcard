@@ -8,7 +8,7 @@ spell = SpellChecker()
 
 nlp = spacy.load("custom_ner_model")
 
-training_text = "We had coffee in Berlin yesterday.I have always dreamed of visiting Rio de Janeiro.Chicago winters are brutal.She moved from Seoul to New York.Bangkok has the best street markets.I've been playing basketball every weekend.Surfing looks so fun but also scary.Do you like to watch soccer or baseball more? They went skiing in the Alps.Fencing requires quick reflexes.Pandas are my favorite animals at the zoo.We saw a group of dolphins near the boat. Bats usually sleep during the day.Kangaroos can jump really high. The tiger stared directly at us.She learned Japanese before moving to Tokyo.Many people in Brazil speak Portuguese. I think German sounds very strong.He's studying Arabic at the university.Do you want to practice some French together? I traveled from Paris to Barcelona while practicing my Spanish.The kids learned some Korean after watching a documentary about Seoul.While in Sydney, we went surfing and saw kangaroos nearby.After playing volleyball in Dubai, we enjoyed some Arabic food. Lions are often associated with cities like Cairo in ancient myths."
+training_text = "Microsoft has a headquarters in italy"
 
 text = input("create flashcards for: ")
 # search wikipedia based on topic
@@ -62,22 +62,27 @@ def find_information(text):
                     flashcards[f'Card-{index}'] = card
                     index +=1
                     # word_dic[token.text] = information
-        # so if it does not recognize theres an ent on the noun then it will also search for it. Otherwise it will skip it
-        elif token.pos_ == 'NOUN' and not token.ent_type_:
-            ms = nlp.vocab.vectors.most_similar(
-            np.asarray([nlp.vocab.vectors[nlp.vocab.strings[token.text]]]), n=8)
-            words = [nlp.vocab.strings[w] for w in ms[0][0]]
-            # only allow words that are different enough so we dont get plurals
-            cleaned_words = [w for w in words if token.text.lower()[:len(w)//2] not in w.lower()]
-            # add to the dictionary
-            word_dic[f"{token.text}"] = cleaned_words
-            # search for the words
-            for words in word_dic:
-                words_info = search(words,words)
-                card = flashcard(words_info,words)
-                flashcards[f'Card-{index}'] = card
-                index +=1
-                information[words] = words_info
+        # so if it does not recognize theres an ent on the noun then it will also search for it. Otherwise it will skip it 
+
+
+        """ 
+        may delete the thing below because it sort of causes issue but if there isnt a token.enbt_type_ then maybe the model should just be trained more. Not sure though
+        """
+        # elif token.pos_ == 'NOUN' and not token.ent_type_:
+        #     ms = nlp.vocab.vectors.most_similar(
+        #     np.asarray([nlp.vocab.vectors[nlp.vocab.strings[token.text]]]), n=8)
+        #     words = [nlp.vocab.strings[w] for w in ms[0][0]]
+        #     # only allow words that are different enough so we dont get plurals
+        #     cleaned_words = [w for w in words if token.text.lower()[:len(w)//2] not in w.lower()]
+        #     # add to the dictionary
+        #     word_dic[f"{token.text}"] = cleaned_words
+        #     # search for the words
+        #     for words in word_dic:
+        #         words_info = search(words,words)
+        #         card = flashcard(words_info,words)
+        #         flashcards[f'Card-{index}'] = card
+        #         index +=1
+        #         information[words] = words_info
         
     print(f"flashcards from find_info\n {flashcards}")
     return word_dic, information, flashcards
@@ -100,8 +105,13 @@ def check_training(text):
 
 def flashcard(text,keyword):
     card ={}
-    sentences = text.split(".")
-    sentences.remove("")
+    try:
+        sentences = text.split(".")
+        sentences.remove("")
+    except Exception as e:
+        print(f"there has been an error is slicing")
+        sentences = text
+        
     card['Name'] = keyword
     for i,sentence in enumerate(sentences):
         # print(f"sentence: {sentence.lower()}, Keyword: {keyword.lower()}")   

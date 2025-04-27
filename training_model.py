@@ -575,7 +575,7 @@ for text, annot in food_data:
     for _, _, label in annot['entities']:
         if label not in ner.labels:
             ner.add_label(label)
-train(NEW_DATA_SET,["FOOD","COUNTRY","CITY","SPORT","ANIMAL","LANGUAGE"])
+train(NEW_DATA_SET,["FOOD","COUNTRY","CITY","SPORT","ANIMAL","LANGUAGE","WORK_OF_ART","ORG","EVENT","TIME","DATE"])
 # clean_data(NEW_DATA_SET)
 
 # next train countries
