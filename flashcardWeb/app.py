@@ -490,6 +490,10 @@ def create():
 def delete():
     return render_template("delete.html")
 
+
+@app.route('/Self-create')
+def auto_create():
+    return render_template("auto_create.html")
 @app.route('/set')
 def set():
     return render_template('set.html')
