@@ -1,6 +1,27 @@
 {% extends 'layout.html' %}
 
 {% block title %}AI | Flashcard App{% endblock %}
-    <h1>Under construction...</h1>
+{% block extra_css %}<link rel="stylesheet" href="/static/ai-create.css">{% endblock %}
 {% block content %}
+<h1>Self Creating Flashcards</h1>
+<div class="auto-page"> 
+    <input id="auto-input" placeholder="Create flashcards for..." type="text">
+    <button>Enter</button>
+    <div class="question-answer-wrapper">
+        <div class="question-wrapper">
+            <div class="box">
+                <p></p>
+            </div>
+            
+        </div>
+        <div class="answer-wrapper">
+            <div class="box">
+                <p></p>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
 {% endblock %}

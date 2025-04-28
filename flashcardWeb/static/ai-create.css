@@ -1,0 +1,37 @@
+
+
+input{
+    width:25%;
+    padding:12px 20px;
+    box-sizing:border-box;
+}
+
+.auto-page{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* make the box so it adjusts when page shrinks instead of a rigid 400 px */
+.box{
+    width: 400px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+      
+}
+
+.question-answer-wrapper{
+    display:flex;
+    flex-direction:row;
+}
+
+button{
+    width:25%;
+}
+
+.question-wrapper, .answer-wrapper{
+    display:flex;
+    flex: column;
+}
