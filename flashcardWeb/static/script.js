@@ -362,3 +362,31 @@ if (feedbackButton){
 
     })
 }
+
+const enter_button_val = document.getElementById("auto-input-button")
+if (enter_button_val){
+    const input = document.getElementById("auto-input")
+    enter_button_val.addEventListener("click",function(){
+        if (enter_button_val !== ""){
+            const inputText= input.value
+            console.log(inputText)
+            input.value =""
+            const request = {request:inputText}
+            fetch('/ai_flashcards',{
+                method:"POST",
+                headers:{
+                    'Content-type':'aplication/json'
+                },
+                body:JSON.stringify(request)
+            })
+            .then (response=>response.json())
+            .then (data =>{
+                if (data.status === "success"){
+                    
+                }
+            })
+        }
+        
+
+    })
+}
