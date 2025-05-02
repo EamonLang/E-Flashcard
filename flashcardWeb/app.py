@@ -720,21 +720,29 @@ def feedback():
         manager.save_error(msg)
         return jsonify({"status":"error","message":"error saving feedback"})
 
-@app.route('/ai_flashcards',methods=['POST'])
+@app.route('/api/ai_flashcards',methods=['POST'])
 def ai_flashcards():
     try:
         data = request.get_json()
-        # get user request then create flashcards
+        if not data:
+            print("error getting data")
 
-        request = data["request"]
-        flashcards = agent.find_information(request)
+        # get user request then create flashcards
+        user_request = data["question"]
+        print(type(user_request))
+        try:
+            flashcards = agent.find_information(user_request)
+        except Exception as e:
+            print(f"Error: {e}")
+        print(flashcards)
         
         if flashcards:
-            manager.save_ai_cards(request,flashcards)
+            # manager.save_ai_cards(request,flashcards)
             return jsonify({"status":"success","flashcards":flashcards})
         else:
             return jsonify({"status":"error","message":"error creating flashcards"})
     except Exception as e:
+        print("it broke")
         msg = "An error occured in the route ai_flashcards"
         manager.save_error(msg)
         return jsonify({"status":"error","message":"error creating flashcards"})

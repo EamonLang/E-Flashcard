@@ -368,25 +368,35 @@ if (enter_button_val){
     const input = document.getElementById("auto-input")
     enter_button_val.addEventListener("click",function(){
         if (enter_button_val !== ""){
-            const inputText= input.value
+            const inputText= input.value.trim()
             console.log(inputText)
-            input.value =""
-            const request = {request:inputText}
-            fetch('/ai_flashcards',{
-                method:"POST",
+            const user_request = {question:inputText}
+            console.log(user_request)
+            fetch('/api/ai_flashcards',{
+                method:'POST',
                 headers:{
-                    'Content-type':'aplication/json'
+                    'Content-type':'application/json'
                 },
-                body:JSON.stringify(request)
+                body:JSON.stringify(user_request)
             })
             .then (response=>response.json())
             .then (data =>{
                 if (data.status === "success"){
-                    
+                    const flashcards = data.flashcards
+                    console.log(flashcards)
+
+                }else{
+                    alert("Error creating flashcards")
+                    console.log("error")
                 }
+            })
+            .catch(error =>{
+                alert(error)
             })
         }
         
+        
 
     })
+    input.value =""
 }

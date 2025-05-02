@@ -73,12 +73,10 @@ def flashcard(text,keyword):
             new_sentence = sentence.lower().replace(keyword,"____")
             card[f"question-{i}"] = new_sentence
             card[f"answer-{i}"] = keyword
-            continue
         else:
             card[f"question-{i}"] = f"What is this about? --> {sentence}"
             card[f"answer-{i}"] = keyword
         
-            continue
     
     # print(f"cards\n{card}\ncards")
     return card
