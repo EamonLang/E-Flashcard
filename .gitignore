@@ -1,3 +1,4 @@
 .env
 .venv
 venv
+custom_ner_model

@@ -11,6 +11,7 @@ from flask_mail import Mail, Message
 from zoneinfo import ZoneInfo
 import os
 from dotenv import load_dotenv
+import agent
 
 load_dotenv()
 
@@ -390,6 +391,20 @@ class SQLManager:
             return "Succesfully commited"
         except mysql.connector.Error as e:
             print(f"error: An error occured in save_error {e}")
+
+    def save_ai_cards(self,question,answer):
+        try:
+            connection = self.get_connection()
+            cursor = connection.cursor()
+            query="INSERT INTO ai_cards (user_id,question,answer,date_created) VALEUS (%s,%s,%s,%s)"
+            date = datetime.now()
+            values = (current_user.id,question,answer,date)
+            cursor.execute(query,values)
+            connection.commit()
+            return "Succesfully added ai cards"
+        except mysql.connector.Error as e:
+            msg = f"An error has occured when trying to save ai cards. Error: {e}"
+            self.save_error(msg)
 
 
 
