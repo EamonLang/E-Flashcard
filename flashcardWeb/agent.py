@@ -66,7 +66,7 @@ def flashcard(text,keyword):
         print(f"there has been an error is slicing")
         sentences = text
         
-    card['Name'] = keyword
+    # card['Name'] = keyword
     for i,sentence in enumerate(sentences):
         # print(f"sentence: {sentence.lower()}, Keyword: {keyword.lower()}")   
         if keyword.lower() in sentence.lower():
@@ -80,3 +80,16 @@ def flashcard(text,keyword):
     
     # print(f"cards\n{card}\ncards")
     return card
+
+# cards = find_information("pizza")[2]
+# # print(cards.values())
+# i = 1
+# for x in cards.values():
+#     for j in x.values():
+#         if i%2==0:
+#             print(f"question: {j}")
+#             i+=1
+#         else:
+#             print(f"answer:{j}")
+#             i+=1
+# # print(cards['Card-1']['Name'])

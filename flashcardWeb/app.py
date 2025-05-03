@@ -732,14 +732,26 @@ def ai_flashcards():
             # get user request then create flashcards
             user_request = data["question"]
             try:
-                flashcards = agent.find_information(user_request)
+                flashcards = agent.find_information(user_request)[2]
+                questions = []
+                answers = []
+                i = 1
+                for x in flashcards.values():
+                    for j in x.values():
+                        if i%2==1:
+                            questions.append(j)
+                            print(f"question: {j}")
+                            i+=1
+                        else:
+                            answers.append(j)
+                            print(f"answer:{j}")
+                            i+=1
             except Exception as e:
                 print(f"Error: {e}")
-            print(flashcards)
             
             if flashcards:
                 # manager.save_ai_cards(request,flashcards)
-                return jsonify({"status":"success","flashcards":flashcards})
+                return jsonify({"status":"success","questions":questions,"answers":answers})
             else:
                 return jsonify({"status":"error","message":"error creating flashcards"})
         else:

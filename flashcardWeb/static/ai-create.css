@@ -15,10 +15,11 @@ input{
 /* make the box so it adjusts when page shrinks instead of a rigid 400 px */
 .box{
     width: 400px;
-    height: 100px;
+    height: auto;
     border: 1px solid black;
     padding: 10px;
     margin: 10px;
+    word-wrap:break-word;
       
 }
 

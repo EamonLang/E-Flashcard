@@ -371,7 +371,6 @@ if (enter_button_val){
             const inputText= input.value.trim()
             input.value=""
             const user_request = {question:inputText}
-            console.log(user_request)
             fetch('/api/ai_flashcards',{
                 method:'POST',
                 headers:{
@@ -382,31 +381,38 @@ if (enter_button_val){
             .then (response=>response.json())
             .then (data =>{
                 if (data.status === "success"){
-                    const flashcards = data.flashcards
-                    console.log(flashcards)
+                    // get cards created from backend
+                    const questions = data.questions
+                    const answers = data.answers
+                    console.log(questions)
+                    console.log(answers)
                     const questionWrapper = document.getElementById('question-wrapper')
                     const answerWrapper = document.getElementById('answer-wrapper')
-                    // create boxes
-                    const questionBox = document.createElement('div')
-                    questionBox.className = 'box'
 
-                    const answerBox = document.createElement('div')
-                    answerBox.className = 'box'
-                    // create text for boxes
-                    const questionBoxText = document.createElement('p')
-                    questionBoxText.innerText = flashcards
-                    questionBox.textContent = questionBoxText
+                    questions.forEach((item,index)=>{
+                        const questionBox = document.createElement('div')
+                        questionBox.className = 'box'
+                        
+                        const questionBoxText = document.createElement('p')
+                        questionBoxText.textContent = `${index+1}. ${item}`
+                        // add text to box
+                        questionBox.appendChild(questionBoxText)
+                        // add box to wrapper
+                        questionWrapper.appendChild(questionBox)
+                    })
+                    answers.forEach((item,index)=>{
+                        const answerBox = document.createElement('div')
+                        answerBox.className = 'box'
+                        
+                        const answerBoxText = document.createElement('p')
+                        answerBoxText.textContent = `${index+1}. ${item}`
+                        // add text to box
+                        answerBox.appendChild(answerBoxText)
 
-                    const answerBoxText = document.createElement('p')
-                    answerBoxText.innerText = flashcards
-                    answerBox.textContent = answerBoxText
-
-
-                    // add created boxes to their respective wrappers
-                    questionWrapper.appendChild(questionBox)
-                    answerWrapper.appendChild(answerBox)
-
-                    
+                        // add box to wrapper
+                        
+                        answerWrapper.appendChild(answerBox)
+                    })                    
 
                 }else{
                     alert(`${data.message}`)
