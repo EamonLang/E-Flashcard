@@ -369,7 +369,7 @@ if (enter_button_val){
     enter_button_val.addEventListener("click",function(){
         if (enter_button_val !== ""){
             const inputText= input.value.trim()
-            console.log(inputText)
+            input.value=""
             const user_request = {question:inputText}
             console.log(user_request)
             fetch('/api/ai_flashcards',{
@@ -384,10 +384,33 @@ if (enter_button_val){
                 if (data.status === "success"){
                     const flashcards = data.flashcards
                     console.log(flashcards)
+                    const questionWrapper = document.getElementById('question-wrapper')
+                    const answerWrapper = document.getElementById('answer-wrapper')
+                    // create boxes
+                    const questionBox = document.createElement('div')
+                    questionBox.className = 'box'
+
+                    const answerBox = document.createElement('div')
+                    answerBox.className = 'box'
+                    // create text for boxes
+                    const questionBoxText = document.createElement('p')
+                    questionBoxText.innerText = flashcards
+                    questionBox.textContent = questionBoxText
+
+                    const answerBoxText = document.createElement('p')
+                    answerBoxText.innerText = flashcards
+                    answerBox.textContent = answerBoxText
+
+
+                    // add created boxes to their respective wrappers
+                    questionWrapper.appendChild(questionBox)
+                    answerWrapper.appendChild(answerBox)
+
+                    
 
                 }else{
-                    alert("Error creating flashcards")
-                    console.log("error")
+                    alert(`${data.message}`)
+                    console.log("error",data.message)
                 }
             })
             .catch(error =>{
@@ -398,5 +421,5 @@ if (enter_button_val){
         
 
     })
-    input.value =""
+    
 }

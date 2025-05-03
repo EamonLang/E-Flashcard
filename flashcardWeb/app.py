@@ -723,24 +723,27 @@ def feedback():
 @app.route('/api/ai_flashcards',methods=['POST'])
 def ai_flashcards():
     try:
-        data = request.get_json()
-        if not data:
-            print("error getting data")
+        if current_user.is_authenticated:
 
-        # get user request then create flashcards
-        user_request = data["question"]
-        print(type(user_request))
-        try:
-            flashcards = agent.find_information(user_request)
-        except Exception as e:
-            print(f"Error: {e}")
-        print(flashcards)
-        
-        if flashcards:
-            # manager.save_ai_cards(request,flashcards)
-            return jsonify({"status":"success","flashcards":flashcards})
+            data = request.get_json()
+            if not data:
+                print("error getting data")
+
+            # get user request then create flashcards
+            user_request = data["question"]
+            try:
+                flashcards = agent.find_information(user_request)
+            except Exception as e:
+                print(f"Error: {e}")
+            print(flashcards)
+            
+            if flashcards:
+                # manager.save_ai_cards(request,flashcards)
+                return jsonify({"status":"success","flashcards":flashcards})
+            else:
+                return jsonify({"status":"error","message":"error creating flashcards"})
         else:
-            return jsonify({"status":"error","message":"error creating flashcards"})
+            return jsonify({"status":"error","message":"Login to utilize the auto create feature"})
     except Exception as e:
         print("it broke")
         msg = "An error occured in the route ai_flashcards"

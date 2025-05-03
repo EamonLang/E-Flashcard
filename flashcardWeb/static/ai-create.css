@@ -33,5 +33,5 @@ button{
 
 .question-wrapper, .answer-wrapper{
     display:flex;
-    flex: column;
+    flex-direction: column;
 }
