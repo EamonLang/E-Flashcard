@@ -444,7 +444,6 @@ if (enter_button_val){
                                 allCards.cards.push(card)
 
                             }
-                            console.log(allCards)
 
                             fetch('/add_set',{
                                 method:'POST',
