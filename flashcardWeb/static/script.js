@@ -388,6 +388,7 @@ if (enter_button_val){
                     console.log(answers)
                     const questionWrapper = document.getElementById('question-wrapper')
                     const answerWrapper = document.getElementById('answer-wrapper')
+                    
 
                     questions.forEach((item,index)=>{
                         const questionBox = document.createElement('div')
@@ -408,11 +409,65 @@ if (enter_button_val){
                         answerBoxText.textContent = `${index+1}. ${item}`
                         // add text to box
                         answerBox.appendChild(answerBoxText)
+                        
 
+                        const delete_button = document.createElement('button')
+                        delete_button.id = `delete-button-${index}`
+                        delete_button.innerHTML="🗑️"
+
+                        answerBox.appendChild(delete_button)
                         // add box to wrapper
                         
                         answerWrapper.appendChild(answerBox)
-                    })                    
+
+                        delete_button.addEventListener("click",function(){
+                            answerBox.remove()
+                            
+                        console.log(`delete-${index+1}`)
+                        })
+                        
+                    })
+
+                    
+                    const saveButton = document.createElement('button')
+                    saveButton.innerText = "Save"
+
+                    const pageWrapper = document.getElementById("page-wrapper")
+
+                    pageWrapper.appendChild(saveButton)
+                    saveButton.addEventListener("click",function(){
+                        if (questions.length >= 1 && questions.length === answers.length){
+                            let allCards = {title:answers.slice(0,1)[0],cards:[]}
+                            
+                            for (let i=0; i<questions.length;i++){
+                                let card = {question:questions.slice(i,i+1)[0],answer:answers.slice(i,i+1)[0]}
+                                allCards.cards.push(card)
+
+                            }
+                            console.log(allCards)
+
+                            fetch('/add_set',{
+                                method:'POST',
+                                headers:{
+                                    'Content-type':'application/json'
+                                },
+                                body: JSON.stringify(allCards)
+                            })
+                            .then(response => response.json())
+                            .then (data => {
+                                if (data.status === "success"){
+                                    alert(data.message)
+                                }else{
+                                    alert(data.message)
+                                }
+                            })
+                            .catch(error =>{
+                                alert(error)
+                            })
+
+                        }
+                    })      
+                       
 
                 }else{
                     alert(`${data.message}`)
